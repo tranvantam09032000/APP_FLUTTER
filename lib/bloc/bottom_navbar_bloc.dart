@@ -4,7 +4,7 @@ enum NavBarItem { HOME, SOURCES, SEARCH }
 
 class BottomNavBarBloc {
   final StreamController<NavBarItem> _navBarController =
-  StreamController<NavBarItem>.broadcast();
+      StreamController<NavBarItem>.broadcast();
 
   NavBarItem defaultItem = NavBarItem.HOME;
 
@@ -25,6 +25,8 @@ class BottomNavBarBloc {
   }
 
   close() {
-    _navBarController?.close();
+    if(_navBarController != null){
+      _navBarController.close();
+    }
   }
 }
