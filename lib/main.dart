@@ -1,24 +1,20 @@
-import 'package:app_flutter/widgets_alert_dialog.dart';
-import 'package:app_flutter/widgets_buttons.dart';
-import 'package:app_flutter/widgets_card.dart';
-import 'package:app_flutter/widgets_column.dart';
-import 'package:app_flutter/widgets_expanded.dart';
-import 'package:app_flutter/widgets_forms.dart';
-import 'package:app_flutter/widgets_grid.dart';
-import 'package:app_flutter/widgets_list.dart';
-import 'package:app_flutter/widgets_rich_text.dart';
-import 'package:app_flutter/widgets_row.dart';
-import 'package:app_flutter/widgets_scaffold.dart';
-import 'package:app_flutter/widgets_stack.dart';
-import 'package:app_flutter/widgets_text.dart';
-import 'package:app_flutter/widgets_text_filed.dart';
-import 'package:app_flutter/widgets_wrap.dart';
-import 'package:app_flutter/widgets_container.dart';
+import 'package:app_flutter/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // runApp(WidgetsList(
-  //   products: List<String>.generate(500, (i) => "Product List: $i"),
-  // ));
-  runApp(WidgetsGrid());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Flutter travel",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: WelcomePage(),
+    );
+  }
 }
