@@ -1,6 +1,7 @@
 import 'package:app_flutter/misc/colors.dart';
 import 'package:app_flutter/widgets/app_buttons.dart';
 import 'package:app_flutter/widgets/app_text.dart';
+import 'package:app_flutter/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_large_text.dart';
@@ -14,6 +15,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   int gottenStars = 4;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -135,11 +137,65 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                       Wrap(
                         children: List.generate(5, (index) {
-                          return AppButtons();
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 10.0),
+                              child: AppButtons(
+                                color: selectedIndex == index
+                                    ? Colors.white
+                                    : Colors.black,
+                                backgroupColor: selectedIndex == index
+                                    ? Colors.black
+                                    : AppColors.buttonBackground,
+                                size: 50,
+                                borderColor: selectedIndex == index
+                                    ? Colors.black
+                                    : AppColors.buttonBackground,
+                                text: (index + 1).toString(),
+                              ),
+                            ),
+                          );
                         }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      AppLargeText(
+                        text: "Description",
+                        color: Colors.black.withOpacity(0.8),
+                        size: 20,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      AppText(
+                        text:
+                            "You must go for a travel. Travelling helps get rid of pressure. Go to the mountains to see the nature.",
+                        color: AppColors.mainTextColor,
                       )
                     ],
                   ),
+                )),
+            Positioned(
+              right: 20,
+                left: 20,
+                bottom: 20,
+                child: Row(
+                  children: [
+                    AppButtons(color: AppColors.textColor1,
+                        backgroupColor: Colors.white,
+                        size: 60,
+                        borderColor:AppColors.textColor1,
+                    isIcon: true,
+                    icon: Icons.favorite_border_outlined),
+                    SizedBox(width: 10,),
+                    ResponesiveButton(isResponsive: true),
+                  ],
                 ))
           ],
         ),
