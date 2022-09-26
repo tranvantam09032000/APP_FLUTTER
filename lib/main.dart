@@ -1,7 +1,11 @@
+import 'package:app_flutter/cubit/app_cubit.dart';
 import 'package:app_flutter/pages/detail_page.dart';
 import 'package:app_flutter/pages/navpages/main_page.dart';
 import 'package:app_flutter/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/app_cubit_logics.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +20,10 @@ class MyApp extends StatelessWidget {
       title: "Flutter travel",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: DetailPage(),
+      home: BlocProvider<AppCubits>(
+        create: (context)=>AppCubits(),
+        child: AppCubitLogics(),
+      ),
     );
   }
 }

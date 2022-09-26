@@ -1,7 +1,9 @@
+import 'package:app_flutter/cubit/app_cubit.dart';
 import 'package:app_flutter/misc/colors.dart';
 import 'package:app_flutter/widgets/app_text.dart';
 import 'package:app_flutter/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/app_large_text.dart';
 
@@ -54,7 +56,13 @@ class _WelcomePageState extends State<WelcomePage> {
                         SizedBox(
                           height: 40,
                         ),
-                        ResponesiveButton(width: 120)
+                        GestureDetector(
+                          onTap: (){
+                            BlocProvider.of<AppCubits>(context).getData();
+                          },
+                          child: Container(
+                              width: 200, child: ResponesiveButton(width: 120)),
+                        ),
                       ],
                     ),
                     Column(
@@ -65,7 +73,9 @@ class _WelcomePageState extends State<WelcomePage> {
                         height: index == indexDot ? 25 : 8,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            color: index == indexDot ?AppColors.mainColor:AppColors.mainColor.withOpacity(0.3)),
+                            color: index == indexDot
+                                ? AppColors.mainColor
+                                : AppColors.mainColor.withOpacity(0.3)),
                       );
                     }))
                   ],
