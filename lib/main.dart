@@ -1,7 +1,6 @@
+
 import 'package:app_flutter/cubit/app_cubit.dart';
-import 'package:app_flutter/pages/detail_page.dart';
-import 'package:app_flutter/pages/navpages/main_page.dart';
-import 'package:app_flutter/pages/welcome_page.dart';
+import 'package:app_flutter/services/data_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: BlocProvider<AppCubits>(
-        create: (context)=>AppCubits(),
+        create: (context)=>AppCubits(data: DataServices()),
         child: AppCubitLogics(),
       ),
     );
